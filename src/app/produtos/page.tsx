@@ -1,24 +1,24 @@
 'use client';
-import { useState } from "react";
+import { useState } from 'react';
 import Card from "@/components/card";
-import CadCliente from "@/components/Forms/CadCliente";
 import CadProduto from "@/components/Forms/CadProduto";
-import CadServico from "@/components/Forms/CadServico";
-import TableCliente from "@/components/Table/TableCliente";
+import ExcProduto from "@/components/Forms/ExcProduto";
+import TableProduto from "@/components/Table/TableProduto";
+import AtlProduto from '@/components/Forms/AtlProdut';
 
-const Page = () => {
+function Page() {
   const [cardSelecionado, setCardSelecionado] = useState("");
 
   const renderConteudo = () => {
     switch (cardSelecionado) {
-      case "cliente":
-        return <CadCliente />;
       case "produto":
         return <CadProduto />;
-      case "servico":
-        return <CadServico />;
-      case "listar-clientes":
-        return <TableCliente />;
+      case "atualiza":
+        return <AtlProduto />;
+      case "excluir":
+        return <ExcProduto />;
+      case "listar-produtos":
+        return <TableProduto />;
       default:
         return null;
     }
@@ -27,28 +27,28 @@ const Page = () => {
   return (
     <div>
       <div className="flex justify-center">
-        <h1 className="text-blue-600 text-4xl font-bold mb-4">Agenda Word Beauty</h1>
+        <h1 className="text-blue-600 text-4xl font-bold mb-4">Produtos</h1>
       </div>
       <div className="flex flex-row flex-wrap justify-center gap-6 p-8">
-        <Card
-          titulo="Cadastrar Cliente"
-          descricao="Formulário para cadastro de cliente"
-          onClick={() => setCardSelecionado("cliente")}
-        />
         <Card
           titulo="Cadastrar Produto"
           descricao="Formulário para cadastro de produto"
           onClick={() => setCardSelecionado("produto")}
         />
         <Card
-          titulo="Cadastrar Serviço"
-          descricao="Formulário para cadastro de serviço"
-          onClick={() => setCardSelecionado("servico")}
+          titulo="Atualizar Produto"
+          descricao="Formulário para atualizar dados do produto"
+          onClick={() => setCardSelecionado("atualiza")}
         />
         <Card
-          titulo="Listar todos os Clientes"
-          descricao="Veja a lista de todos os clientes"
-          onClick={() => setCardSelecionado("listar-clientes")}
+          titulo="Excluir Produto"
+          descricao="Formulário para excluir produto"
+          onClick={() => setCardSelecionado("excluir")}
+        />
+        <Card
+          titulo="Listar todos os Produtos"
+          descricao="Veja a lista de todos os produtos"
+          onClick={() => setCardSelecionado("listar-produtos")}
         />
       </div>
 
@@ -61,6 +61,6 @@ const Page = () => {
       </div>
     </div>
   );
-};
+}
 
 export default Page;

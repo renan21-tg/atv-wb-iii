@@ -1,22 +1,22 @@
 'use client';
-import { useState } from "react";
+import { useState } from 'react';
 import Card from "@/components/card";
+import AtlCliente from "@/components/Forms/AtlCliente";
 import CadCliente from "@/components/Forms/CadCliente";
-import CadProduto from "@/components/Forms/CadProduto";
-import CadServico from "@/components/Forms/CadServico";
+import ExcCliente from "@/components/Forms/ExcCliente";
 import TableCliente from "@/components/Table/TableCliente";
 
-const Page = () => {
+function Page() {
   const [cardSelecionado, setCardSelecionado] = useState("");
 
   const renderConteudo = () => {
     switch (cardSelecionado) {
       case "cliente":
         return <CadCliente />;
-      case "produto":
-        return <CadProduto />;
-      case "servico":
-        return <CadServico />;
+      case "atualiza":
+        return <AtlCliente />;
+      case "excluir":
+        return <ExcCliente />;
       case "listar-clientes":
         return <TableCliente />;
       default:
@@ -27,7 +27,7 @@ const Page = () => {
   return (
     <div>
       <div className="flex justify-center">
-        <h1 className="text-blue-600 text-4xl font-bold mb-4">Agenda Word Beauty</h1>
+        <h1 className="text-blue-600 text-4xl font-bold mb-4">Clientes</h1>
       </div>
       <div className="flex flex-row flex-wrap justify-center gap-6 p-8">
         <Card
@@ -36,14 +36,14 @@ const Page = () => {
           onClick={() => setCardSelecionado("cliente")}
         />
         <Card
-          titulo="Cadastrar Produto"
-          descricao="Formulário para cadastro de produto"
-          onClick={() => setCardSelecionado("produto")}
+          titulo="Atualizar Cliente"
+          descricao="Formulário para atualizar dados do cliente"
+          onClick={() => setCardSelecionado("atualiza")}
         />
         <Card
-          titulo="Cadastrar Serviço"
-          descricao="Formulário para cadastro de serviço"
-          onClick={() => setCardSelecionado("servico")}
+          titulo="Excluir Cliente"
+          descricao="Formulário para excluir cliente"
+          onClick={() => setCardSelecionado("excluir")}
         />
         <Card
           titulo="Listar todos os Clientes"
@@ -61,6 +61,6 @@ const Page = () => {
       </div>
     </div>
   );
-};
+}
 
 export default Page;
